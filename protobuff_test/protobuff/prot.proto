@@ -1,0 +1,166 @@
+﻿syntax = "proto3";
+
+/**** Enumerations ****/
+/**** CommandTypeEnum ****/
+enum CommandTypeEnum {
+    COMMAND_SET_RELAY                   = 0;        /* TBD */
+    COMMAND_SET_LED                     = 1;        /* TBD */
+    COMMAND_SET_BUZZER                  = 2;        /* TBD */
+    COMMAND_SET_ANALOGINPUT_TYPE        = 3;        /* TBD */
+}
+
+/**** SensorsTypeEnum ****/
+enum SensorsTypeEnum {
+    SENSOR_MESSAGE_SENSOR_DATA          = 0;        /* TBD */
+    SENSOR_MESSAGE_DEBUG_DATA           = 1;        /* TBD */
+    SENSOR_MESSAGE_DIGINPUT_DATA        = 2;        /* TBD */
+    SENSOR_MESSAGE_ANINPUT_DATA         = 3;        /* TBD */
+}
+
+/**** SetLedDataEnum ****/
+enum SetLedDataEnum {
+    LED_DATA_ALL_LED_OFF        = 0;        /* TBD */
+    LED_DATA_GREEN_ON           = 1;        /* TBD */
+    LED_DATA_GREEN_BLINK        = 2;        /* TBD */
+    LED_DATA_RED_ON             = 3;        /* TBD */
+    LED_DATA_RED_BLINK          = 4;        /* TBD */
+}
+
+/**** BuzzerCtrlEnum ****/
+enum BuzzerCtrlEnum {
+    BUZZER_CTRL_BUZZ_OFF            = 0;        /* TBD */
+    BUZZER_CTRL_BUZZ_1HZ1KHZ        = 1;        /* TBD */
+    BUZZER_CTRL_BUZZ_4KHZ           = 2;        /* TBD */
+    BUZZER_CTRL_BUZZ_2TONE          = 3;        /* TBD */
+}
+
+/**** AnInCtrlEnum ****/
+enum AnInCtrlEnum {
+    ANINPUT_SET_VOLTAGE         = 0;        /* TBD */
+    ANINPUT_SET_MILLIAMP        = 1;        /* TBD */
+}
+
+/**** RelayCtrlEnum ****/
+enum RelayCtrlEnum {
+    RELAY_SET_OFF        = 0;        /* TBD */
+    RELAY_SET_ON         = 1;        /* TBD */
+}
+
+/**** ROLE1 Messages ****/
+/**** Message SensorData structure ****/
+message SensorData {
+     /* TBD */
+    uint32    pid            = 1; /* default:0 */
+     /* TBD */
+    uint32    o2             = 2; /* default:0 */
+     /* TBD */
+    uint32    co2            = 3; /* default:0 */
+     /* TBD */
+    uint32    co             = 4; /* default:0 */
+     /* TBD */
+    uint32    humidity       = 5; /* default:0 */
+     /* TBD */
+    uint32    pressureIn     = 6; /* default:0 */
+     /* TBD */
+    uint32    pressureOut    = 7; /* default:0 */
+     /* TBD */
+    uint32    temperature    = 8; /* default:0 */
+     /* TBD */
+    uint32    flow           = 9; /* default:0 */
+}
+
+/**** Message DebugData structure ****/
+message DebugData {
+     /* TBD */
+    bool    EfuseFault            = 1; /* default:0 */
+     /* TBD */
+    bool    DigitalSensorFault    = 2; /* default:0 */
+}
+
+/**** Message SetRelayData structure ****/
+message SetRelayData {
+     /* TBD */
+    bool    relay1    = 1; /* default:0 */
+     /* TBD */
+    bool    relay2    = 2; /* default:0 */
+     /* TBD */
+    bool    relay3    = 3; /* default:0 */
+     /* TBD */
+    bool    relay4    = 4; /* default:0 */
+     /* TBD */
+    bool    relay5    = 5; /* default:0 */
+     /* TBD */
+    bool    relay6    = 6; /* default:0 */
+}
+
+/**** Message SetAnlalogInputType structure ****/
+message SetAnlalogInputType {
+     /* TBD */
+    bool    anIn1		= 1; /* default:0 */
+     /* TBD */
+    bool    anIn2    	= 2; /* default:0 */
+     /* TBD */
+    bool    anIn3    	= 3; /* default:0 */
+}
+
+/**** Message DigInputData structure ****/
+message DigInputData {
+     /* TBD */
+    bool    DigIn1    = 1; /* default:0 */
+     /* TBD */
+    bool    DigIn2    = 2; /* default:0 */
+     /* TBD */
+    bool    DigIn3    = 3; /* default:0 */
+}
+
+/**** Message AnInputData structure ****/
+message AnInputData {
+     /* TBD */
+    uint32    AnIn1    = 1; /* default:0 */
+     /* TBD */
+    uint32    AnIn2    = 2; /* default:0 */
+     /* TBD */
+    uint32    AnIn3    = 3; /* default:0 */
+}
+
+/**** Message SetBuzzerData structure ****/
+message SetBuzzerData {
+     /* TBD */
+    uint32    data    = 1; /* default:0 */
+}
+
+/**** ROLE0 Messages ****/
+/**** Message SensorToIface structure ****/
+message SensorToIface {
+     /* Sync/Async report type. */
+    SensorsTypeEnum    sensorstype    = 1; /* enum */
+     /* TBD */
+    oneof    cmdData { 
+         /* TBD */
+        SensorData         sensor         = 3; /* message */
+         /* TBD */
+        DebugData          debug          = 4; /* message */
+         /* TBD */
+        DigInputData       diginput       = 5; /* message */
+         /* TBD */
+        AnInputData        aninput        = 6; /* message */
+    }
+}
+
+/**** Message IfaceToSensor structure ****/
+message IfaceToSensor {
+     /* Command type. */
+    CommandTypeEnum        commandType    = 1; /* enum */
+     /* Command payload. */
+    oneof    commandData { 
+         /* TBD */
+        SetRelayData           relay          = 3; /* message */
+         /* TBD */
+        SetLedDataEnum         led            = 4; /* enum */
+         /* TBD */
+        SetBuzzerData          buzzer         = 5; /* message */
+         /* TBD */
+        SetAnlalogInputType    anintype       = 6; /* message */
+    }
+}
+
