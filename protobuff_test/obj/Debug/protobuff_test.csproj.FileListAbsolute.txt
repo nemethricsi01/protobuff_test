@@ -2,7 +2,6 @@ C:\Users\nemet\source\repos\protobuff_test\protobuff_test\bin\Debug\protobuff_te
 C:\Users\nemet\source\repos\protobuff_test\protobuff_test\bin\Debug\protobuff_test.exe
 C:\Users\nemet\source\repos\protobuff_test\protobuff_test\bin\Debug\protobuff_test.pdb
 C:\Users\nemet\source\repos\protobuff_test\protobuff_test\obj\Debug\protobuff_test.csproj.AssemblyReference.cache
-C:\Users\nemet\source\repos\protobuff_test\protobuff_test\obj\Debug\protobuff_test.csproj.SuggestedBindingRedirects.cache
 C:\Users\nemet\source\repos\protobuff_test\protobuff_test\obj\Debug\protobuff_test.Form1.resources
 C:\Users\nemet\source\repos\protobuff_test\protobuff_test\obj\Debug\protobuff_test.Properties.Resources.resources
 C:\Users\nemet\source\repos\protobuff_test\protobuff_test\obj\Debug\protobuff_test.csproj.GenerateResource.cache

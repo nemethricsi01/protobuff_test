@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using Google.Protobuf;
+using System.Collections;
+using System.Runtime.Remoting.Messaging;
 
 namespace protobuff_test
 {
@@ -16,23 +19,25 @@ namespace protobuff_test
     {
         SensorToIface sensorToIface = new SensorToIface
         {
-            Sensorstype = SensorsTypeEnum.SensorMessageSensorData
+            Sensorstype = SensorsTypeEnum.SensorMessageSensorData,
+            
         };
         SensorData sensorData = new SensorData
         {
-            O2 = 0,
-            Co = 0,
-            Co2 = 0,
-            Flow = 0,
-            Humidity = 0,
-            Pid = 0,
-            PressureIn = 0,
-            PressureOut = 0,
-            Temperature = 0
+            O2 = 1,
+            Co = 1,
+            Co2 = 1,
+            Flow = 1,
+            Humidity = 1,
+            Pid = 1,
+            PressureIn = 1,
+            PressureOut = 1,
+            Temperature = 1
         };
         public Form1()
         {
             InitializeComponent();
+            timer1.Enabled = true;
             
         }
 
@@ -53,7 +58,6 @@ namespace protobuff_test
             labelO2.Text = trackBarO2.Value.ToString();
             sensorData.O2 = (uint)trackBarO2.Value;
             // Serialize the message to a byte array
-            label7.Text = sensorToIface.ToString();
 
         }
 
@@ -113,6 +117,22 @@ namespace protobuff_test
                 textBoxError.Text=ex.Message;
             };
             
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            richTextBox1.Text = sensorToIface.Sensorstype.ToString();
+            byte[] bytes = sensorData.ToByteArray();
+
+            
+            SensorData deserializedMessage = SensorData.Parser.ParseFrom(bytes);
+
+            // You can now access the fields of the deserialized message
+            uint o2 = deserializedMessage.O2;
+            uint co = deserializedMessage.Co;
+
+
         }
     }
 }

@@ -49,7 +49,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBoxError = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarO2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCO2)).BeginInit();
@@ -238,21 +239,25 @@
             this.textBoxError.TabIndex = 19;
             this.textBoxError.Visible = false;
             // 
-            // label7
+            // timer1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(403, 254);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "label7";
+            this.timer1.Interval = 200;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(379, 187);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(100, 96);
+            this.richTextBox1.TabIndex = 20;
+            this.richTextBox1.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBoxError);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.button1);
@@ -305,7 +310,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox textBoxError;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
