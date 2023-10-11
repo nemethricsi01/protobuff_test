@@ -11,6 +11,7 @@ using System.IO.Ports;
 using Google.Protobuf;
 using System.Collections;
 using System.Runtime.Remoting.Messaging;
+using Consistent_Overhead_Byte_Stuffing;
 
 namespace protobuff_test
 {
@@ -125,13 +126,22 @@ namespace protobuff_test
             richTextBox1.Text = sensorToIface.Sensorstype.ToString();
             byte[] bytes = sensorData.ToByteArray();
 
+            byte[] cobsOut = new byte[1000];
             
+
+            var count = COBS.cobs_encode(ref bytes, bytes.Count(), ref cobsOut);
+
             SensorData deserializedMessage = SensorData.Parser.ParseFrom(bytes);
 
             // You can now access the fields of the deserialized message
             uint o2 = deserializedMessage.O2;
             uint co = deserializedMessage.Co;
 
+            var encodeTest = new byte[1000];
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Write(cobsOut, 0, count);
+            }
 
         }
     }

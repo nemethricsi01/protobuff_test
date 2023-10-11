@@ -26,3 +26,4 @@ C:\Users\nemet\source\repos\protobuff_test\protobuff_test\bin\Debug\System.Memor
 C:\Users\nemet\source\repos\protobuff_test\protobuff_test\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\nemet\source\repos\protobuff_test\protobuff_test\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\nemet\source\repos\protobuff_test\protobuff_test\obj\Debug\protobuff_test.csproj.CopyComplete
+C:\Users\nemet\source\repos\protobuff_test\protobuff_test\obj\Debug\protobuff_test.csproj.SuggestedBindingRedirects.cache
